@@ -126,7 +126,7 @@ class Container(
 
     val preventTailRecursion =
       snapshot match {
-        case BootstrapConfigs(configs) if getBootstrapGeneration > previousConfigGeneration =>
+        case BootstrapConfigs(configs) =>
           log.log(DEBUG,
             """Got new bootstrap generation
               |bootstrap generation = %d
@@ -137,15 +137,6 @@ class Container(
           createNewGraph(
             createComponentsGraph(configs, getBootstrapGeneration,fallbackInjector),
             fallbackInjector)
-        case BootstrapConfigs(_) =>
-          // This is an assumed dead code branch, most likely remains from before config set subscriptions were available.
-          log.warning(
-            """Got bootstrap configs with previous generation. (This should not happen.)
-              |bootstrap generation = %d
-              |components generation: %d
-              |previous generation: %d"""
-              .format(getBootstrapGeneration, getComponentsGeneration, previousConfigGeneration).stripMargin)
-          createNewGraph(graph, fallbackInjector)
         case ComponentsConfigs(configs) =>
           log.log(DEBUG,
             """Got components configs,
