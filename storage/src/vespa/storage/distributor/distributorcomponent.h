@@ -68,10 +68,10 @@ public:
     bool ownsBucketInCurrentState(const document::Bucket &bucket) const;
 
     /**
-     * Returns a reference to the current system state. Valid until the next
-     * time the distributor main thread processes its message queue.
+     * Returns a reference to the current cluster state bundle. Valid until the
+     * next time the distributor main thread processes its message queue.
      */
-    const lib::ClusterState& getClusterState() const;
+    const lib::ClusterStateBundle& getClusterStateBundle() const;
 
     /**
      * Returns the ideal nodes for the given bucket.

@@ -186,7 +186,7 @@ protected:
         ClusterInformation::CSP clusterInfo(
                 new SimpleClusterInformation(
                         getBucketDBUpdater().getDistributorComponent().getIndex(),
-                        lib::ClusterState(clusterState),
+                        lib::ClusterStateBundle(lib::ClusterState(clusterState)),
                         "ui"));
         return clusterInfo;
     }

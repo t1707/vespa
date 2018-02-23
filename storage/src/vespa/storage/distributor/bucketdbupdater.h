@@ -152,7 +152,7 @@ private:
 
     void updateState(const lib::ClusterState& oldState, const lib::ClusterState& newState);
 
-    void removeSuperfluousBuckets(const lib::ClusterState& newState);
+    void removeSuperfluousBuckets(const lib::ClusterStateBundle& newState);
 
     void replyToPreviousPendingClusterStateIfAny();
 
